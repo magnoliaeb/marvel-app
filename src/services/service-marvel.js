@@ -29,11 +29,12 @@ serviceMarvel.getComicsByCharacter = (id, limit, offset) => {
 
 
 
-serviceMarvel.getComics = (title, format, limit, offset) => {
+serviceMarvel.getComics = (title, format, issueNumber, limit, offset) => {
     return HTTP.get('/comics', {
         params: {
             title: title || null,
             format,
+            issueNumber,
             limit,
             offset,
             orderBy: 'focDate',

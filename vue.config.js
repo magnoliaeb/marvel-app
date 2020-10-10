@@ -3,5 +3,7 @@ module.exports = {
   "transpileDependencies": [
     "vuetify"
   ],
-  publicPath: '/marvel-app/'
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/marvel-app/'
+    : '/'
 }

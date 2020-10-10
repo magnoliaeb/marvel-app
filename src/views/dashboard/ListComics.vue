@@ -1,11 +1,10 @@
 <template>
   <div>
     <v-container grid-list-md>
-      <!-- <pre>{{ likeComics }}</pre> -->
 
       <h3 class="title mt-6">MARVEL COMICS LIST</h3>
       <v-row class="justify-space-between align-center d-flex">
-        <v-col cols="7">
+        <v-col cols="7" class="d-flex align-center">
           <v-text-field
             name="query"
             label="Enter the title of the comic"
@@ -13,6 +12,60 @@
             append-icon="mdi-magnify"
             @keyup.enter="getComicsByNameWithPaginate"
           ></v-text-field>
+                <v-dialog
+      v-model="dialog"
+      scrollable
+      max-width="300px"
+    >
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          color="primary"
+          class="ml-3"
+          text
+          v-bind="attrs"
+          v-on="on"
+        >
+          <v-icon left>mdi-filter-variant</v-icon>
+            Filter by
+        </v-btn>
+      </template>
+      <v-card>
+        <v-card-title>Select Issue number</v-card-title>
+        <v-divider></v-divider>
+        <v-card-text style="height: 350px;">
+          <v-radio-group
+            v-model="selectIssueNumber"
+            column
+          >
+            <v-radio v-for="i in [0,1,2,3,4]" :key="i"
+              :label="`Issue number ${i}`"
+              :value="i"
+            ></v-radio>
+           
+         
+         
+          
+          </v-radio-group>
+        </v-card-text>
+        <v-divider></v-divider>
+        <v-card-actions>
+          <v-btn
+            color="error darken-1"
+            text
+            @click="dialog = false"
+          >
+            Close
+          </v-btn>
+          <v-btn
+            color="primary darken-1"
+            text
+            @click="getComicsByFormatWitIssueNumber"
+          >
+            Select
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
         </v-col>
         <v-col cols="auto" class="text-right">
           <v-subheader>{{ total }} all results</v-subheader>
@@ -66,7 +119,8 @@ export default {
   },
   data() {
     return {
-      // selectIssueNumber: null,
+      selectIssueNumber: null,
+        dialog: false,
       activateTab: 0,
       query: null,
       active: null,
@@ -89,13 +143,13 @@ export default {
   },
 
   created() {
-    this.getComics(null, null, this.porPagina, 0);
+    this.getComics(null, null, null, this.porPagina, 0);
   },
 
   methods: {
-    getComics(title, format, limit, offset) {
+    getComics(title, format, issueNumber, limit, offset) {
       this.isLoading = true;
-      serviceMarvel.getComics(title, format, limit, offset).then(data => {
+      serviceMarvel.getComics(title, format, issueNumber, limit, offset).then(data => {
         this.total = data.total;
         this.paginas = Math.ceil(this.total / this.porPagina);
 
@@ -118,6 +172,7 @@ export default {
             };
           });
         }
+        console.log(comics)
 
         this.$store.commit('comics/SET_COMICS', comics);
 
@@ -129,7 +184,8 @@ export default {
       const format = this.formatSelect;
       const limit = this.porPagina;
       const offset = this.porPagina * (this.page - 1);
-      this.getComics(title, format, limit, offset);
+      const issueNumber = this.selectIssueNumber
+      this.getComics(title, format, issueNumber, limit, offset);
     },
 
     getComicsByNameWithPaginate() {
@@ -144,6 +200,13 @@ export default {
       this.query = null
       this.page = 1;
       this.getComicsWithPaginate();
+    },
+    getComicsByFormatWitIssueNumber() {
+      this.query = null
+      this.activateTab = 0
+      this.page = 1;
+      this.getComicsWithPaginate();
+      this.dialog = false
     }
   }
 };
