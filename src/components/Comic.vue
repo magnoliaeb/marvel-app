@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import moment from "moment";
+import moment from 'moment';
 
 export default {
   props: {
@@ -83,7 +83,7 @@ export default {
     },
     trimLength(val) {
       if (!val) {
-        return "Not data";
+        return 'Not data';
       }
       if (val.length < 40) {
         return val;
@@ -93,6 +93,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-</style>

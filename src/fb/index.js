@@ -4,13 +4,13 @@ import 'firebase/firestore'
 
   // Your web app's Firebase configuration
   const firebaseConfig = {
-    apiKey: "AIzaSyCx4rSDCrwja-YSSatXiUMN1Op9vag8IUg",
-    authDomain: "app-marvel-4b2dc.firebaseapp.com",
-    databaseURL: "https://app-marvel-4b2dc.firebaseio.com",
-    projectId: "app-marvel-4b2dc",
-    storageBucket: "app-marvel-4b2dc.appspot.com",
-    messagingSenderId: "1011349489015",
-    appId: "1:1011349489015:web:984ab2354087e2e8e60d72"
+    apiKey: 'AIzaSyCx4rSDCrwja-YSSatXiUMN1Op9vag8IUg',
+    authDomain: 'app-marvel-4b2dc.firebaseapp.com',
+    databaseURL: 'https://app-marvel-4b2dc.firebaseio.com',
+    projectId: 'app-marvel-4b2dc',
+    storageBucket: 'app-marvel-4b2dc.appspot.com',
+    messagingSenderId: '1011349489015',
+    appId: '1:1011349489015:web:984ab2354087e2e8e60d72'
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);

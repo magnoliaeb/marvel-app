@@ -1,31 +1,31 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 
-import Home from "../views/Home.vue";
+import Home from '../views/Home.vue';
 
-import SignIn from "../views/SignIn.vue";
-import SignUp from "../views/SignUp.vue";
-import ForgotPassword from "../views/ForgotPassword.vue";
-import NotFound from "../views/NotFound.vue";
+import SignIn from '../views/SignIn.vue';
+import SignUp from '../views/SignUp.vue';
+import ForgotPassword from '../views/ForgotPassword.vue';
+import NotFound from '../views/NotFound.vue';
 
-import Dashboard from "../views/dashboard/Dashboard.vue";
+import Dashboard from '../views/dashboard/Dashboard.vue';
 
-import CharacterDetail from "../views/dashboard/CharacterDetail.vue";
-import ComicDetail from "../views/dashboard/ComicDetail.vue";
+import CharacterDetail from '../views/dashboard/CharacterDetail.vue';
+import ComicDetail from '../views/dashboard/ComicDetail.vue';
 
-import CharactersByComic from "../components/CharactersByComic.vue";
-import StoriesByComic from "../components/StoriesByComic.vue";
+import CharactersByComic from '../components/CharactersByComic.vue';
+import StoriesByComic from '../components/StoriesByComic.vue';
 
-import ComicsByCharacter from "../components/ComicsByCharacter.vue";
-import StoriesByCharacter from "../components/StoriesByCharacter.vue";
+import ComicsByCharacter from '../components/ComicsByCharacter.vue';
+import StoriesByCharacter from '../components/StoriesByCharacter.vue';
 
 
-import LikeComics from "../components/LikeComics.vue";
-import LikeCharacters from "../components/LikeCharacters";
+import LikeComics from '../components/LikeComics.vue';
+import LikeCharacters from '../components/LikeCharacters';
 
-import ListComics from "../views/dashboard/ListComics.vue";
-import ListCharacters from "../views/dashboard/ListCharacters.vue";
-import ListLikes from "../views/dashboard/ListLikes.vue";
+import ListComics from '../views/dashboard/ListComics.vue';
+import ListCharacters from '../views/dashboard/ListCharacters.vue';
+import ListLikes from '../views/dashboard/ListLikes.vue';
 
 import { auth } from '../fb/index'
 Vue.use(VueRouter);
@@ -34,7 +34,7 @@ Vue.use(VueRouter);
 
 
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   base: process.env.BASE_URL,
   routes : [
     {
@@ -44,39 +44,39 @@ const router = new VueRouter({
   
     },
     {
-      path: "/",
-      name: "Home",
+      path: '/',
+      name: 'Home',
       component: Home,
       redirect: { name: 'SignIn'}
     },
     {
-      path: "/dashboard",
-      name: "Dashboard",
+      path: '/dashboard',
+      name: 'Dashboard',
       component: Dashboard,
       redirect: { name: 'ListCharacters'},
       meta: { requiresAuth: true }
     },
     {
-      path: "/list-comics",
-      name: "ListComics",
+      path: '/list-comics',
+      name: 'ListComics',
       component: ListComics,
       meta: { requiresAuth: true }
     },
     {
-      path: "/list-likes",
-      name: "ListLikes",
+      path: '/list-likes',
+      name: 'ListLikes',
       component: ListLikes,
       redirect: { name: 'LikeCharacters'},
       meta: { requiresAuth: true },
       children: [
         {
-          path: "/like-comics",
-          name: "LikeComics",
+          path: '/like-comics',
+          name: 'LikeComics',
           component: LikeComics,
         },
         {
-          path: "/like-characters",
-          name: "LikeCharacters",
+          path: '/like-characters',
+          name: 'LikeCharacters',
           component: LikeCharacters,
         },
 
@@ -85,20 +85,20 @@ const router = new VueRouter({
        
    
     {
-      path: "/comic/:id",
-      name: "ComicDetail",
+      path: '/comic/:id',
+      name: 'ComicDetail',
       component: ComicDetail,
       meta: { requiresAuth: true },
       redirect: { name: 'CharactersByComic'},
       children: [
         {
-          path: "/comic/:id/characters",
-          name: "CharactersByComic",
+          path: '/comic/:id/characters',
+          name: 'CharactersByComic',
           component: CharactersByComic,
         },
         {
-          path: "/comic/:id/stories",
-          name: "StoriesByComic",
+          path: '/comic/:id/stories',
+          name: 'StoriesByComic',
           component: StoriesByComic,
         },
 
@@ -106,44 +106,44 @@ const router = new VueRouter({
     
     },
     {
-      path: "/character/:id",
-      name: "CharacterDetail",
+      path: '/character/:id',
+      name: 'CharacterDetail',
       component: CharacterDetail,
       meta: { requiresAuth: true },
       redirect: { name: 'ComicsByCharacter'},
       children: [
         {
-          path: "/character/:id/comic",
-          name: "ComicsByCharacter",
+          path: '/character/:id/comic',
+          name: 'ComicsByCharacter',
           component: ComicsByCharacter,
         },
         {
-          path: "/character/:id/stories",
-          name: "StoriesByCharacter",
+          path: '/character/:id/stories',
+          name: 'StoriesByCharacter',
           component: StoriesByCharacter,
         },
 
       ]
     },
     {
-      path: "/list-characters",
-      name: "ListCharacters",
+      path: '/list-characters',
+      name: 'ListCharacters',
       component: ListCharacters,
       meta: { requiresAuth: true }
     },
     {
-      path: "/forgot-password",
-      name: "ForgotPassword",
+      path: '/forgot-password',
+      name: 'ForgotPassword',
       component: ForgotPassword
     },
     {
-      path: "/sign-in",
-      name: "SignIn",
+      path: '/sign-in',
+      name: 'SignIn',
       component: SignIn
     },
     {
-      path: "/sign-up",
-      name: "SignUp",
+      path: '/sign-up',
+      name: 'SignUp',
       component: SignUp,
     },
     

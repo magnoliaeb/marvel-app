@@ -46,7 +46,3 @@ import appComic from '../components/Comic'
        
     }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

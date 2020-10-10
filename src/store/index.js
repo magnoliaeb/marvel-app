@@ -1,5 +1,5 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import Vue from 'vue';
+import Vuex from 'vuex';
 import { auth } from '../fb'
 import charactersModule from './moduls/charactes'
 import comicsModule from './moduls/comics'
@@ -31,16 +31,16 @@ export default new Vuex.Store({
   },
   actions: {
     fetchUser({ commit }, user) {
-      commit("SET_IS_LOGGED", user !== null);
+      commit('SET_IS_LOGGED', user !== null);
       if (user) {
-        commit("SET_USER_PROFILE", {
+        commit('SET_USER_PROFILE', {
           uid: user.uid,
           displayName: user.displayName,
           email: user.email,
           photoURL: user.photoURL
         });
       } else {
-        commit("SET_USER_PROFILE", null);
+        commit('SET_USER_PROFILE', null);
       }
     },
     async registerUser({ dispatch }, credencials) {
@@ -62,7 +62,7 @@ export default new Vuex.Store({
     async logutUser({ commit }) {
       await auth.signOut()
       commit('SET_USER_PROFILE', {});
-      commit("SET_IS_LOGGED", null);
+      commit('SET_IS_LOGGED', null);
 
     }
   },

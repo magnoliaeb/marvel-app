@@ -87,7 +87,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex';
 export default {
   created () {
     const darkTheme = JSON.parse(localStorage.getItem('is-dark-theme'));
@@ -104,10 +104,10 @@ export default {
       isDark: false,
       drawer: false,
       items: [
-        { title: "Home", icon: "mdi-home-city", redirecTo: 'Dashboard' },
-        { title: "Characters", icon: "mdi-account-outline", redirecTo: 'ListCharacters' },
-        { title: "Comics", icon: "mdi-arrange-send-backward" ,redirecTo: 'ListComics'},
-        { title: "Likes", icon: "mdi-heart" ,redirecTo: 'ListLikes'},
+        { title: 'Home', icon: 'mdi-home-city', redirecTo: 'Dashboard' },
+        { title: 'Characters', icon: 'mdi-account-outline', redirecTo: 'ListCharacters' },
+        { title: 'Comics', icon: 'mdi-arrange-send-backward' ,redirecTo: 'ListComics'},
+        { title: 'Likes', icon: 'mdi-heart' ,redirecTo: 'ListLikes'},
       ],
       mini: false
     };
@@ -115,7 +115,7 @@ export default {
  
   computed: {
     getInicialsName() {
-      const fullName = this.getUser.profile.displayName || "";
+      const fullName = this.getUser.profile.displayName || '';
       const fullNameArry = fullName.split(" ");
       const inicialsName = [];
       fullNameArry.forEach(name => {
@@ -123,19 +123,19 @@ export default {
         inicialsName.push(inicial);
       });
 
-      return inicialsName.join("");
+      return inicialsName.join('');
     },
-    ...mapGetters(["getUser"])
+    ...mapGetters(['getUser'])
   },
   methods: {
     changeTheme() {
       this.$vuetify.theme.dark = !this.$vuetify.theme.dark
       this.isDark = !this.isDark
-      localStorage.setItem("is-dark-theme", JSON.stringify(this.isDark));
+      localStorage.setItem('is-dark-theme', JSON.stringify(this.isDark));
     },
     logutUser() {
-      this.$store.dispatch("logutUser").then(() => {
-        this.$router.push({ name: "SignIn" });
+      this.$store.dispatch('logutUser').then(() => {
+        this.$router.push({ name: 'SignIn' });
       });
     }
   }

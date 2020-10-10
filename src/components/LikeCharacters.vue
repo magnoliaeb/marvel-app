@@ -47,6 +47,3 @@ import appCharacter from '../components/Character'
     }
 </script>
 
-<style lang="scss" scoped>
-
-</style>

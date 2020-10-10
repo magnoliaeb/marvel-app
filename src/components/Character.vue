@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import moment from "moment";
+import moment from 'moment';
 
 export default {
   props: {
@@ -62,6 +62,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-</style>
